@@ -2,7 +2,7 @@
 La puerta de entrada única del ecosistema Sigue Tu Carrera. Se encarga de centralizar todas las llamadas externas y redirigirlas dinámicamente a sus respectivos microservicios.
 
 ## Especificaciones Técnicas
-* **Puerto de Entrada Único:** `8080`
+* **Puerto de Entrada Único:** `8000`
 * **Versión de Núcleo:** Spring Boot 3.3.x / Spring Cloud Gateway (Reactivo - Netty)
 
 ## Ventajas de la Arquitectura
