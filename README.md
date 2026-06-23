@@ -1,22 +1,38 @@
-# MS_Gateweay
-La puerta de entrada única del ecosistema Sigue Tu Carrera. Se encarga de centralizar todas las llamadas externas y redirigirlas dinámicamente a sus respectivos microservicios.
+MS_Gateway
+La puerta de entrada única del ecosistema Sigue Tu Carrera. Se encarga de centralizar todas las llamadas externas, procesar el ruteo hacia la documentación y redirigir dinámicamente el tráfico eliminando los prefijos de las URL hacia sus respectivos microservicios.
 
-## Especificaciones Técnicas
-* **Puerto de Entrada Único:** `8000`
-* **Versión de Núcleo:** Spring Boot 3.3.x / Spring Cloud Gateway (Reactivo - Netty)
+Especificaciones Técnicas
+Puerto de Entrada Único: 8000
 
-## Ventajas de la Arquitectura
-* **Abstracción de Puertos:** Postman y los clientes externos solo consumen el puerto `8080`.
-* **Rendimiento Asíncrono:** Desarrollado sobre Netty no bloqueante para evitar colisiones de hilos con los servidores de base de datos de Laragon.
+Versión de Núcleo: Spring Boot 3.4.1 / Spring Cloud Gateway (Reactivo - Netty)
 
-## Mapa de Enrutamiento Activo
-* `/api/v1/estudiantes/**` -> Redirige a Puerto `8001`
-* `/api/v1/asignaturas/**` -> Redirige a Puerto `8002`
-* `/api/v1/inscripciones/**` -> Redirige a Puerto `8003`
-* `/api/v1/Calificacioness/**` -> Redirige a Puerto `8004`
-* `/api/v1/avance-curricular/**` -> Redirige a Puerto `8005`
-* `/api/v1/aranceles/**` -> Redirige a Puerto `8006`
-* `/api/v1/pagos/**` -> Redirige a Puerto `8007`
-* `/api/v1/becas/**` -> Redirige a Puerto `8008`
-* `/api/v1/notificaciones/**` -> Redirige a Puerto `8009`
-* `/api/v1/usuarios/**` -> Redirige a Puerto `8010`
+Ventajas de la Arquitectura
+Abstracción de Puertos: Los clientes externos y la interfaz de Swagger consumen exclusivamente el puerto 8000.
+
+Rendimiento Asíncrono: Desarrollado sobre Netty no bloqueante para evitar colisiones de hilos con los servidores de base de datos de Laragon.
+
+Mapa de Enrutamiento y Filtros Activos
+El Gateway reescribe las rutas eliminando el prefijo del microservicio antes de enviarlo al contenedor destino:
+
+/api/v0/Estudiante/ -> Redirige a Puerto 8001
+
+/api/v0/Malla/ -> Redirige a Puerto 8002
+
+/api/v0/Inscripcion/ -> Redirige a Puerto 8003
+
+/api/v0/Calificaciones/ -> Redirige a Puerto 8004
+
+/api/v0/AvanceCurricular/ -> Redirige a Puerto 8005
+
+/api/v0/Arancel/ -> Redirige a Puerto 8006
+
+/api/v0/Pagos/ -> Redirige a Puerto 8007
+
+/api/v0/Becas/ -> Redirige a Puerto 8008
+
+/api/v0/Notificaciones/ -> Redirige a Puerto 8009
+
+/api/v0/User/ -> Redirige a Puerto 8010 (Filtros de Auth)
+
+Documentación Agregada
+Swagger UI: Configurado para agregar la documentación OpenAPI de todos los microservicios del ecosistema en una sola interfaz unificada.
