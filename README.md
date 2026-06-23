@@ -15,7 +15,8 @@ La puerta de entrada única del ecosistema Sigue Tu Carrera. Se encarga de centr
 * `/api/v1/inscripciones/**` -> Redirige a Puerto `8003`
 * `/api/v1/Calificacioness/**` -> Redirige a Puerto `8004`
 * `/api/v1/avance-curricular/**` -> Redirige a Puerto `8005`
-* `/api/v1/tuition/**` -> Redirige a Puerto `8006`
+* `/api/v1/aranceles/**` -> Redirige a Puerto `8006`
 * `/api/v1/pagos/**` -> Redirige a Puerto `8007`
 * `/api/v1/becas/**` -> Redirige a Puerto `8008`
 * `/api/v1/notificaciones/**` -> Redirige a Puerto `8009`
+* `/api/v1/usuarios/**` -> Redirige a Puerto `8010`
